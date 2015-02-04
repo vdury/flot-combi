@@ -1,0 +1,5 @@
+all: cbuild
+
+cbuild: 
+	javac -cp bin -sourcepath src -d bin src/tsp/MainTSP.java
+
