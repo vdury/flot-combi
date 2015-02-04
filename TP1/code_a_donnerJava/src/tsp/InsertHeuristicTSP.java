@@ -10,43 +10,54 @@ import java.util.List;
 
 public class InsertHeuristicTSP implements HeuristicTSP {
 
-
+    int minTab(double[] tab){
+	int    index = 0;
+	double min   = tab[0];
+	
+	for(int i = 0; i<tab.length; ++i){
+	    if(tab[i] < min){
+		min   = tab[i];
+		index = i;
+	    }
+	}
+	return index;
+    }
     
 
 
     /** TODO : coder cette méthode */
     public double computeSolution(double[][] matrix, List<Integer> solution) {
-	double   value   = 0.0;
-	int      n       = matrix[0].length;		
-	double   min     = 100000000;
-	int      k       = -1;
-	double[] values  = new double[n];
-	int      etat    = 3;
-	boolean[]  witness = new boolean[n];
+	double    value   = 0.0;
+	int       n       = matrix[0].length;		
+	double    min     = 100000000;
+	int       k       = -1;
+	int       etat    = 3;
+	double[]  values  = new double[n];
+	boolean[] witness = new boolean[n];
 
 
 	solution.add(0);
 
-	for(etat = 0; etat < n; etat++){ //pour tous
+	for(etat = 0; etat < 10; etat++){ //pour tous
 	    for(int i = 0; i < n; ++i){ //on itere au nombre de noeuds
 		for(int j = 0; j < n; j++){ //recherche du plus proche
-		    if(matrix[etat][j] < min && etat != j && witness[j]){
+		    if(matrix[etat][j] < min && etat != j && !witness[j]){
 			min = matrix[etat][j];
 			k = j;
 		    }
 		}
 		
-		witness[k] = true;
-		value   += min;
-		min      = 10000000;
-		etat     = k;
+		witness[k] = false;
+		value     += min;
+		min        = 10000000;
+		etat       = k;
 	    }
 	    values[etat] = value;	    
 	}
 
 
 	/* reprendre le chemin qui marche*/
-	//etat = minTab(values);
+	etat = minTab(values);
 	for(int i = 0; i < n; ++i){ //on itere au nombre de noeuds
 	    for(int j = 0; j < n; j++){ //recherche du plus proche
 		if(matrix[etat][j] < min && etat != j && !solution.contains(j)){
