@@ -37,11 +37,15 @@ public class DecreasingArcHeuristicTSP implements HeuristicTSP{
 		solution.add(list.get(0).getStart());
 		solution.add(list.get(0).getFinish());
 		value = list.get(0).getValue();
-		for(Arc arc: list){
+		Arc arc;
+		int a = 1;
+		while(list.size() != a && solution.size() != n){
+		    arc = list.get(a);
 		    if(!solution.contains(arc.getFinish())) {
 			solution.add(arc.getFinish());
 			value += arc.getValue();
 		    }
+		    a= a+1;
 		}
 		return value;
 	}
