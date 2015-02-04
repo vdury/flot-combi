@@ -10,8 +10,11 @@ import java.util.List;
 
 public class InsertHeuristicTSP implements HeuristicTSP {
 
-    /**Simple recherche de minimum dans un tableau de double*/
+    /**Simple recherche de minimum dans un tableau de double
+     *
+     */
     int minTab(double[] tab){
+
 	int    index = 0;
 	double min   = tab[0];
 	
@@ -32,6 +35,7 @@ public class InsertHeuristicTSP implements HeuristicTSP {
      *
      */
     public double computeSolution(double[][] matrix, List<Integer> solution) {
+
 	double    value   = 0.0;
 	int       n       = matrix[0].length;		
 	double    min     = 100000000;
@@ -40,9 +44,7 @@ public class InsertHeuristicTSP implements HeuristicTSP {
 	double[]  values  = new double[n];
 	boolean[] witness = new boolean[n];
 
-
 	solution.add(0);
-
 
 	//Thread? chacun fait 20 iter
 	for(etat = 0; etat < n/2; etat++){ //pour tous
@@ -63,7 +65,7 @@ public class InsertHeuristicTSP implements HeuristicTSP {
 	}
 
 
-	/* reprendre le chemin qui marche*/
+	/* reprendre le chemin qui marche le mieu*/
 	etat = minTab(values);
 	for(int i = 0; i < n; ++i){ //on itere au nombre de noeuds
 	    for(int j = 0; j < n; j++){ //recherche du plus proche
@@ -75,7 +77,7 @@ public class InsertHeuristicTSP implements HeuristicTSP {
 	    
 	    solution.add(k);
 	    value += min;
-	    min      = 10000000;
+	    min    = 10000000;
 	    etat   = k;
 	}
 	
