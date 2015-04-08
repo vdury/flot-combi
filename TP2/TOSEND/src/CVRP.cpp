@@ -8,13 +8,6 @@
 #include"CVRP.hpp"
 
 
-CVRPData::CVRPData(const CVRPData &data){
-  Capacity = data.getCapacity();
-  NbNodes = data.getSize();
-  Distances = data.getDistances();
-  Demands = data.getDemand();
-}
-
 CVRPData::CVRPData(const char* filename){
   std::ifstream infile;
   int tmp;

@@ -1,0 +1,12 @@
+#include <iostream>
+#include <fstream>
+#include <limits>
+#include <cstdlib>
+#include <cstring>
+#include <cmath>
+#include <vector>
+#include"CVRP.hpp"
+
+Tour::Tour(CVRPData data, int customer){
+
+}

@@ -8,7 +8,6 @@ private :
   int * Demands;
 
 public :
-  CVRPData();
   CVRPData(const char* filename);
   ~CVRPData();
   int getCapacity() const;
