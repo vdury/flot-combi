@@ -2,8 +2,6 @@
 #include "Tour.hpp"
 #include <iterator>
 
-
-
 double computeSolution(CVRPData data){
   std::list<Tour> liste_tournee; 
   unsigned int i,j;
@@ -40,23 +38,8 @@ double computeSolution(CVRPData data){
     iter = liste_tournee.erase(iter);
     iter2 = liste_tournee.erase(iter2);
 
-    std::cout << tmp.getRemainingCapacity() << std::endl;
     liste_tournee.push_back(tmp);
   }
  
   return liste_tournee.front().getRemainingCapacity();
-}
-
-
-int main(int argc, char** argv){
-  
-  if (argc > 1) {
-    CVRPData cvrp(argv[1]);
-    //    std::cout << cvrp << std::endl;
-  
-    std::cout << computeSolution(cvrp) << std::endl;
-  }
-
-
-  return 0;
 }
